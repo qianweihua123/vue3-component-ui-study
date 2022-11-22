@@ -1,0 +1,59 @@
+@use 'config'as *; //全部导入 config 的配置，使用 use 引入只会引入一次
+@forward 'config'; //将 config 导出，这样其他组件也可以使用
+
+//遵寻的是我们 create 里面定义的 bem 规范
+// .z-button{} 传入一个名字内部将命名空间和传入的拼接
+@mixin b($block) {
+    $B: $namespace+'-'+$block;
+
+    .#{$B} {
+        //其实就是解析$B的内容（命名空间和传入的拼接）
+        //这是sass 的变量差值语法
+        //
+        //$key:margin;
+        //$1:1;
+        //box#{$i){
+        //width: $number；
+        //height： $number；
+        //#{$key}：auto；
+        // @returns {*}
+        //}
+        //并且把这个变量取到，比如 u-button {color:red}， 并且将定义的样式内容放到这里面
+        @content;
+    }
+}
+
+// .z-button.is-xxx
+@mixin when($state) {
+
+    //when 是拼接状态比如 u-button.is-disabled
+    @at-root {
+
+        //&代表当前元素 $state-prefix      :'is-';
+        &.#{$state-prefix + $state} {
+            @content;
+        }
+    }
+}
+
+// &--primary => .z-button--primary
+@mixin m($modifier) {
+
+    //$modifier-separator:'--'; 在当前元素后面加上--并且链接是什么类型，比如按钮是什么颜色使用这种方式去分割
+    @at-root {
+        #{&+$modifier-separator+$modifier} {
+            @content;
+        }
+    }
+}
+
+// &__header  => .z-button__header
+@mixin e($element) {
+
+    //如果是元素的话再后加上两个底划线$element-separator : '__';
+    @at-root {
+        #{&+$element-separator+$element} {
+            @content;
+        }
+    }
+}

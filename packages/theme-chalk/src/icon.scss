@@ -1,0 +1,15 @@
+@use 'mixins/mixins'as *;
+
+@include b('icon') {
+    //b里面会将 u-拼接上 u-icon
+    height        : 1em;
+    width         : 1em;
+    line-height   : 1em;
+    display       : inline-block;
+    vertical-align: middle;
+
+    svg {
+        height: 1em;
+        width : 1em;
+    }
+}
