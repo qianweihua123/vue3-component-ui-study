@@ -1,7 +1,7 @@
 @use 'mixins/mixins'as *;
 
 @include b('icon') {
-    //b里面会将 u-拼接上 u-icon
+    //b里面会将 u-拼接上 q-icon
     height        : 1em;
     width         : 1em;
     line-height   : 1em;

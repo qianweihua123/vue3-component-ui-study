@@ -18,6 +18,6 @@ export * from './src/icon'
 //给 vue上扩展一个类型
 declare module 'vue' {
     export interface GlobalComponents {
-        UIcon: typeof Icon
+        QIcon: typeof Icon
     }
 }

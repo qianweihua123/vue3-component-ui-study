@@ -48,7 +48,7 @@ function createBEM(prefixedName: string) {
     }
 }
 export function createNamespace(name: string) {
-    const prefixedName = `u-${name}`
+    const prefixedName = `q-${name}`
     return createBEM(prefixedName)
 }
 const bem = createNamespace('button');
